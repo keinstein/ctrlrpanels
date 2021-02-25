@@ -5,6 +5,7 @@
 --
 midiInquiry = function(--[[ CtrlrModulator --]] mod, --[[ number --]] value, --[[ number --]] source)
   console("midiInquiry")
+  local i
   for i=0,0x0f
   do
    panel:sendMidiMessageNow(createYamahaSystemBulkDumpRequest(i))

@@ -1,9 +1,9 @@
 --
 -- Called when a panel receives a midi message (does not need to match any modulator mask)
--- @midi   CtrlrMidiMessage object
+-- @midi   string object
 --
 
-sysReceived = function(--[[ CtrlrMidiMessage --]] midi)
+sysReceived = function(--[[ string --]] midi, --[[ table ]] decoded)
   print("sysReceived")
   local sysTbl = sysTbl or {
     [0x0] = sysexReceived,
@@ -23,6 +23,6 @@ sysReceived = function(--[[ CtrlrMidiMessage --]] midi)
     [0xe] = ignoreMidi,
     [0xf] = ignoreMidi
   }
-  print("Entry: ", midi:getByte(0) % 0x10)
-  return sysTbl[ midi:getByte(0) % 0x10 ] (midi) 
+  print("Entry: ", midi:byte(1) % 0x10)
+  return sysTbl[ midi:byte(1) % 0x10 ] (midi, decoded) 
 end

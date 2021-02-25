@@ -2,7 +2,8 @@
 -- Called when a MIDI channel property for the panel changes
 --
 midiReceived = function(--[[ CtrlrMidiMessage --]] midi)
-  print("midiReceived: ", midi:getData():getByte(0))
+  console("midiReceived: ".. midi:getData():getByte(0))
+  console("full text: ".. midi:getData():toString())
   local codeTbl = codeTbl or {
     [0x0] = ignoreMidi,
     [0x1] = ignoreMidi,
@@ -21,7 +22,9 @@ midiReceived = function(--[[ CtrlrMidiMessage --]] midi)
     [0xe] = ignoreMidi,
     [0xf] = sysReceived,
   }
-  print(codeTbl)
-  print("Table entry: ", math.floor((midi:getData():getByte(0))/(0x10)))
-  codeTbl[ math.floor((midi:getData():getByte(0))/(0x10)) ](midi:getData())
+  local data = memoryblockToString(midi:getData())
+  console("result: (".. tostring(#data).. ") " .. data)
+  local index = math.floor(data:byte(1)/(0x10))
+  console("Table entry: ".. index)
+  codeTbl[ index ](data,{})
 end

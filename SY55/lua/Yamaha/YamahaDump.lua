@@ -1,10 +1,11 @@
 YamahaFormatTable = {
-  [0x7a] = receiveSY55FormatMessage
+  [0x7a] = YamahaSY55FormatMessageReceived
 }
-function YamahaDump(midi)
+function YamahaDump(--[[ string ]] midi, --[[ table ]] decoded)
+    console("Yamaha Dump")
 	-- Your method code here
-    channel = midi.getByte(2) % 0x10
-    format = midi.getByte(3)
-    f = YamahaFormatTable[format]
-    return (type(f) == "function" and f(midi) or f)
+    decoded["devId"] = midi:byte(3) % 0x10
+    decoded["format"] = midi:byte(4)
+    local f = YamahaFormatTable[decoded["format"]]
+    return (type(f) == "function" and f(midi, decoded) or f)
 end
