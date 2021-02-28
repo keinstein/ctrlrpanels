@@ -24,8 +24,9 @@ ManufacturerTable = {
         ["members"] = {
           [0x0000] = {
             ["name"] = "<default>",
-            ["major Version"] = function(data) return "SOFT VER. " .. floor(data["major version"]/0x100) end,
-            ["minor Version"] = function(data) return "ROM No. " .. floor(data["minor version"]/0x100) end
+            ["major version"] = function(data) return "SOFT VER. " .. floor(data["major version"]/0x80) end,
+            ["minor version"] = function(data) return "ROM No. " .. floor(data["minor version"]/0x80) end,
+            ["stringrep"] = function(data) return string.format("Korg M1, Id=%d",data['devId']) end
          }
         }
       }
@@ -121,25 +122,37 @@ midiReceivedStates = {
    },   
    ["unrt device inquiry reply data"] = {
       ["fields"] = {
-	 { 2, "b", "family" },
-	 { 2,"b", "member" },
-	 { 2,"b", "minor version" },
-	 { 2,"b", "major version" }
+	 { 2, "r", "family" },
+	 { 2, "r", "member" },
+	 { 2, "b", "minor version" },
+	 { 2, "b", "major version" }
       },
       ["getstate"] = function (midi, current, data)
-	 if (midi:byte(current) ~= 0x7f) then return "end",current, data end
-	 local fam = ManufacturerTable[vid]["families"][data["family"]]
+	 print("getstate current byte: ",midi:byte(current)," = ",0xf7)
+	 if (midi:byte(current) ~= 0xf7) then return "end",current, data end
+	 print_table(ManufacturerTable)
+	 print(data["unrt vid"])
+	 local fam = ManufacturerTable[data["unrt vid"]]["families"][data["family"]]
+	 print_table(fam)
 	 if not fam then return "end", current, data end
+	 data["family name"] = fam["name"] or string.format("%04x",data["family"])
 	 local member = fam["members"][data["member"]]
 	 if not member then return "end", current, data end
 	 data["minor version"] = type(member["minor version"]) == "function" and
-	    member["minor version"](data["minor version"]) or
-	    format("%04x",data["minor version"])
+	    member["minor version"](data) or
+	    string.format("%04x",data["minor version"])
 	 data["major version"] = type(member["major version"]) == "function" and
-	    member["major version"](data["major version"]) or data["major version"] or
-	    format("%04x",data["major version"])
+	    member["major version"](data) or data["major version"] or
+	    string.format("%04x",data["major version"])
+	 data["stringrep"] = type(member["stringrep"]) == "function" and
+	    member["stringrep"](data) or data["stringrep"] or
+	    string.format("%s %s %s, Id=%d",
+			  data["unrt vendor"],
+			  data["family name"],
+			  data["member"],
+			  data["devId"])
 	 print_table(data)
-	 universalDeviceIdentification(data)
+	 midiInquiryAnswerReceived(midi, data)
 	 return "end",current,data
       end,
       ["newstate"] = {
