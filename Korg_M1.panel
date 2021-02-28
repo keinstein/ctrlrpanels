@@ -8,7 +8,7 @@
        panelMidiSnapshotDelay="10.0" panelMidiSnapshotShowProgress="0"
        panelMidiInputChannelDevice="0" panelMidiInputDevice="ES1371"
        panelMidiControllerChannelDevice="1" panelMidiControllerDevice="ES1371"
-       panelMidiOutputChannelDevice="1" panelMidiOutputDevice="Midi Through Port-0"
+       panelMidiOutputChannelDevice="1" panelMidiOutputDevice="ES1371"
        panelMidiInputFromHost="0" panelMidiInputChannelHost="1" panelMidiOutputToHost="0"
        panelMidiOutputChannelHost="1" panelMidiThruH2H="0" panelMidiThruH2HChannelize="0"
        panelMidiThruH2D="0" panelMidiThruH2DChannelize="0" panelMidiThruD2D="0"
@@ -25,12 +25,12 @@
        luaPanelMessageHandler="-- None" luaPanelModulatorValueChanged="-- None"
        luaPanelSaveState="-- None" luaPanelRestoreState="-- None" luaPanelMidiSnapshotPost="-- None"
        luaPanelMidiSnapshotPre="-- None" luaAudioProcessBlock="-- None"
-       luaPanelOSCReceived="ignoredMidiReceived" panelFilePath="/home/tobias/macbookbackup/Documents/MaMu/M1/Korg_M1.panel"
+       luaPanelOSCReceived="ignoredMidiReceived" panelFilePath="/nomirror/tobias/macbookbackup/Documents/MaMu/ctrlrpanels/Korg_M1.panel"
        panelLastSaveDir="/home/tobias/macbookbackup/Documents/MaMu/M1"
        panelUID="8.rFXVfQwRbwG" panelInstanceUID="fa37" panelInstanceManufacturerID="JncC"
        panelModulatorListColumns="-- None" panelModulatorListCsvDelimiter=","
        panelModulatorListXmlRoot="ctrlrModulatorList" panelModulatorListXmlModulator="ctrlrModulator"
-       panelModulatorListSortOption="1.0" panelGlobalVariables="-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1"
+       panelModulatorListSortOption="1.0" panelGlobalVariables="0:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1:-1"
        panelResources="-- None" panelPropertyDisplayIDs="0" ctrlrMenuItemBackgroundColour="ffffffff"
        ctrlrMenuItemTextColour="ff000000" ctrlrMenuItemHighlightedTextColour="ffffffff"
        ctrlrMenuItemHighlightColour="ff4364ff" ctrlrMenuItemFont="&lt;Sans-Serif&gt;;18;0;0;0;0;1;3"
@@ -38,10 +38,13 @@
        ctrlrMenuBarBackgroundColour1="fff7f7f7" ctrlrMenuBarBackgroundColour2="ffcccccc"
        ctrlrMenuBarTextColour="ff000000" ctrlrMenuBarHighlightedTextColour="ffffffff"
        ctrlrMenuBarHighlightColour="ff4364ff" ctrlrMenuBarFont="&lt;Sans-Serif&gt;;18;0;0;0;0;1;3"
-       ctrlrUseEditorWrapper="0" panelIndex="1" panelIsDirty="0">
+       ctrlrUseEditorWrapper="0" panelIndex="1" panelIsDirty="0" uiLuaConsoleSnips="">
   <uiWindowManager>
     <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="206 300 1610 632">
-      <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;OPEN id=&quot;received&quot;/&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA/received/midiInquiryAnswerReceived&quot;/&gt;&#13;&#10;&lt;/OPEN&gt;&#13;&#10;;ff807d75e0754247a07bba7f57685d72:7861521c220e4714bbec6d5fefb8db57:06afefb972d4433e8f2dada250952db6:3dc6345e023d47668b985054047ce80c:68519118cd974521838be663c0490ab9:b89d66e2f84346e2b717d93d03c0e5a0"/>
+      <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;OPEN id=&quot;received&quot;/&gt;&#13;&#10;  &lt;OPEN id=&quot;helpers&quot;/&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA/helpers/print_table&quot;/&gt;&#13;&#10;&lt;/OPEN&gt;&#13;&#10;;ff807d75e0754247a07bba7f57685d72:7861521c220e4714bbec6d5fefb8db57:06afefb972d4433e8f2dada250952db6:3dc6345e023d47668b985054047ce80c:68519118cd974521838be663c0490ab9:b89d66e2f84346e2b717d93d03c0e5a0:d0bf2651c4584e8d94c90a271eb79671"/>
+    </uiChildWindow>
+    <uiChildWindow uiChildWindowName="LuaConsole" uiChildWindowState="560 324 800 500">
+      <uiChildWindowContentState/>
     </uiChildWindow>
   </uiWindowManager>
   <luaManager>
@@ -71,18 +74,20 @@
                    luaMethodSource="1" uuid="ff807d75e0754247a07bba7f57685d72" luaMethodValid="1"/>
         <luaMethod luaMethodName="midiReceived" luaMethodSourcePath="received/midiReceived.lua"
                    luaMethodSource="1" uuid="7861521c220e4714bbec6d5fefb8db57" luaMethodValid="1"/>
-        <luaMethod luaMethodName="ignoredMidiReceived" luaMethodCode="--&#10;-- Called when a panel receives a midi message (does not need to match any modulator mask)&#10;-- @midi   CtrlrMidiMessage object&#10;--&#10;&#10;ignoredMidiReceived = function(--[[ CtrlrMidiMessage --]] midi)&#13;&#10;  print(&quot;ignoredMidiReceived&quot;)&#10;end"
-                   luaMethodLinkedProperty="" luaMethodSource="0" uuid="06afefb972d4433e8f2dada250952db6"
-                   luaMethodValid="1"/>
-        <luaMethod luaMethodName="universalNonRealtimeSysExReceived" luaMethodCode="--&#10;-- Called when a panel receives a midi message (does not need to match any modulator mask)&#10;-- @midi   CtrlrMidiMessage object&#10;--&#10;&#13;&#10;local universalNonRealtimeSysExSwitch&#10;universalNonRealtimeSysExReceived = function(--[[ CtrlrMidiMessage --]] midi)&#10;    print(&quot;Universal NRT Message()&quot;)&#13;&#10;  universalNonRealtimeSysExSwitch = universalNonRealtimeSysExSwitch or {&#13;&#10;    [0x06] = midiInquiryMessageReceived,&#13;&#10;  }&#13;&#10;  local f =  universalNonRealtimeSysExSwitch[midi:getData():getByte(3)]&#13;&#10;  -- type(t[v]) == &quot;function&quot; and t[v]() or t[v] or &quot;blah&quot;&#13;&#10;  f2 = type(f) == &quot;function&quot; and f(midi) or ignoredMidiReceived(midi)&#13;&#10;end"
-                   luaMethodLinkedProperty="" luaMethodSource="0" uuid="3dc6345e023d47668b985054047ce80c"
-                   luaMethodValid="1"/>
-        <luaMethod luaMethodName="midiInquiryMessageReceived" luaMethodCode="&#13;&#10;local midiInquirySwitch&#13;&#10;function midiInquiryMessageReceived(midi)&#10;&#9;-- Your method code here&#13;&#10;  print(&quot;MidiInquiryMessageReceived()&quot;)&#13;&#10;   midiInquirySwitch = midiInquirySwitch or {&#13;&#10;       -- [0x01] = midiInquiryRequest,&#13;&#10;    [0x02] = midiInquiryAnswerReceived&#13;&#10;  }&#13;&#10;  local f =  midiInquirySwitch[midi:getData():getByte(4)]&#13;&#10;  -- type(t[v]) == &quot;function&quot; and t[v]() or t[v] or &quot;blah&quot;&#13;&#10;  f2 = type(f) == &quot;function&quot; and f(midi) or ignoredMidiReceived(midi)&#13;&#10; &#10;end"
-                   luaMethodLinkedProperty="" luaMethodSource="0" uuid="68519118cd974521838be663c0490ab9"
-                   luaMethodValid="1"/>
-        <luaMethod luaMethodName="midiInquiryAnswerReceived" luaMethodCode="--&#10;-- Called when a panel receives a midi message (does not need to match any modulator mask)&#10;-- @midi   CtrlrMidiMessage object&#10;--&#10;&#13;&#10;_G.ManufacturerIds = {&#13;&#10;  [0x42] = {&#13;&#10;    [&quot;name&quot;] = &quot;Korg&quot;, &#13;&#10;    [&quot;families&quot;] = {&#13;&#10;      [0x1900] = {&#13;&#10;        [&quot;name&quot;] = &quot;M1&quot;,&#13;&#10;        [&quot;members&quot;] = {&#13;&#10;          [0x0000] = {&#13;&#10;            [&quot;name&quot;] = &quot;&lt;default&gt;&quot;,&#13;&#10;            [&quot;Major Version&quot;] = function(hi, lo) return &quot;SOFT VER &quot; .. hi .. &quot;.&quot; .. lo end,&#13;&#10;            [&quot;Minor Version&quot;] = function(hi, lo) return &quot;ROM No. &quot; .. hi .. &quot;.&quot; .. lo end&#13;&#10;         }&#13;&#10;        }&#13;&#10;      }&#13;&#10;    }&#13;&#10;  },&#13;&#10;  [0x43] = {&#13;&#10;    [&quot;name&quot;] = &quot;Yamaha&quot;,&#13;&#10;  },&#13;&#10;  [0x7e] = {&#13;&#10;    [&quot;name&quot;] = &quot;Universal Non-Realtime&quot;,&#13;&#10;  },&#13;&#10;  [0x7f] = {&#13;&#10;    [&quot;name&quot;] = &quot;Universal Realtime&quot;,&#13;&#10;  }&#13;&#10;}&#10;midiInquiryAnswerReceived = function(--[[ CtrlrMidiMessage --]] midi)&#13;&#10;  -- console(midi:toString())&#13;&#10;  devId = midi:getData():getByte(2)&#13;&#10;  manId = midi:getData():getByte(5)&#13;&#10;  famId = midi:getData():getByte(6)* 0x100 + midi:getData():getByte(7)&#13;&#10;  memberId = midi:getData():getByte(8)* 0x100 + midi:getData():getByte(9)&#13;&#10;  manufacturer = _G.ManufacturerIds[manId]&#13;&#10;  manufacturername = manufacturer and manufacturer[&quot;name&quot;] or tostring(manId)&#13;&#10;  family = (manufacturer and manufacturer[&quot;families&quot;]) and manufacturer[&quot;families&quot;][famId]&#13;&#10;  familyname = family and family[&quot;name&quot;] or tostring(famId)&#13;&#10;  member = (family and family[&quot;members&quot;]) and family[&quot;members&quot;][memberId]&#13;&#10;  membername = member and member[&quot;name&quot;] or tostring(memberId)&#13;&#10;  majorname = (type(member[&quot;Major Version&quot;])== &quot;function&quot; and &#13;&#10;     member[&quot;Major Version&quot;](midi:getData():getByte(12),midi:getData():getByte(13)) or &#13;&#10;     midi:getData():getByte(12)..&quot; &quot;..midi:getData():getByte(13))&#13;&#10;  minorname = (type(member[&quot;Minor Version&quot;])== &quot;function&quot; and &#13;&#10;     member[&quot;Minor Version&quot;](midi:getData():getByte(10),midi:getData():getByte(11)) or &#13;&#10;     midi:getData():getByte(10)..&quot; &quot;..midi:getData():getByte(11))&#13;&#10;  console(&quot;Manufacturer: &quot;.. manufacturername)&#13;&#10;  console(&quot;Family: &quot; .. familyname)&#13;&#10;  console(&quot;Member: &quot; .. membername)&#13;&#10;  console(&quot;Major Version: &quot; .. majorname)&#13;&#10;  console(&quot;Minor Version: &quot; .. minorname)&#13;&#10;  console(&quot;Device Id: &quot; .. devId)&#13;&#10;end"
-                   luaMethodLinkedProperty="" luaMethodSource="0" uuid="b89d66e2f84346e2b717d93d03c0e5a0"
-                   luaMethodValid="1"/>
+        <luaMethod luaMethodName="ignoredMidiReceived2" luaMethodSourcePath="received/ignoredMidiReceived2.lua"
+                   luaMethodSource="1" uuid="06afefb972d4433e8f2dada250952db6" luaMethodValid="1"/>
+        <luaMethod luaMethodName="universalNonRealtimeSysExReceived2" luaMethodSourcePath="received/universalNonRealtimeSysExReceived2.lua"
+                   luaMethodSource="1" uuid="3dc6345e023d47668b985054047ce80c" luaMethodValid="1"/>
+        <luaMethod luaMethodName="midiInquiryMessageReceived2" luaMethodSourcePath="received/midiInquiryMessageReceived2.lua"
+                   luaMethodSource="1" uuid="68519118cd974521838be663c0490ab9" luaMethodValid="1"/>
+        <luaMethod luaMethodName="midiInquiryAnswerReceived2" luaMethodSourcePath="received/midiInquiryAnswerReceived2.lua"
+                   luaMethodSource="1" uuid="b89d66e2f84346e2b717d93d03c0e5a0" luaMethodValid="1"/>
+      </luaMethodGroup>
+      <luaMethodGroup name="helpers" uuid="83ce7a156db74e3f9ad7c52d88286469">
+        <luaMethod luaMethodName="memoryblockToString" luaMethodSourcePath="/home/tobias/uni/Documents/MaMu/ctrlrpanels/SY55/lua/midiHelpers/memoryblockToString.lua"
+                   luaMethodSource="1" uuid="a0f23a91c79f4b978754dfb4dcb1eda7" luaMethodValid="1"/>
+        <luaMethod luaMethodName="print_table" luaMethodSourcePath="helpers/print_table.lua"
+                   luaMethodSource="1" uuid="d0bf2651c4584e8d94c90a271eb79671" luaMethodValid="1"/>
       </luaMethodGroup>
     </luaManagerMethods>
   </luaManager>
@@ -90,7 +95,7 @@
   <uiPanelEditor uiPanelCanvasRectangle="0 0 600 400" uiPanelSnapSize="8" uiPanelBackgroundColour="0xffffffff"
                  uiPanelBackgroundColour1="0xffffffff" uiPanelBackgroundColour2="0xffffffff"
                  uiPanelBackgroundGradientType="1" uiPanelImageResource="-- None"
-                 uiPanelEditMode="1" uiPanelLock="0" uiPanelDisabledOnEdit="0"
+                 uiPanelEditMode="0" uiPanelLock="0" uiPanelDisabledOnEdit="0"
                  uiPanelMenuBarVisible="1" uiPanelMenuBarHideOnExport="0" uiPanelProgramsMenuHideOnExport="0"
                  uiPanelMidiControllerMenuHideOnExport="0" uiPanelMidiThruMenuHideOnExport="0"
                  uiPanelMidiChannelMenuHideOnExport="0" uiPanelWidth="400" uiPanelHeight="400"
@@ -102,7 +107,7 @@
                  uiPanelTooltipOutlineColour="0xff000000" uiPanelTooltipColour="0xff000000"
                  uiPanelTooltipCornerRound="1.0" uiPanelTooltipPlacement="2" uiPanelTooltipFont="&lt;Sans-Serif&gt;;15;1;0;0;0;1;3"
                  uiPanelLookAndFeel="V3" uiPanelColourScheme="Light" uiPanelZoom="1.0"
-                 uiPanelViewPortSize="1203" uiPanelPropertiesSize="707">
+                 uiPanelPropertiesSize="382" uiPanelViewPortSize="1528">
     <uiPanelCanvasLayer uiPanelCanvasLayerName="New layer" uiPanelCanvasLayerUid="734f247302000000b555d6b477010000"
                         uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
                         uiPanelCanvasLayerIndex="0"/>
@@ -139,8 +144,7 @@
                uiButtonConnectedLeft="0" uiButtonConnectedRight="0" uiButtonConnectedTop="0"
                uiButtonConnectedBottom="0" uiButtonRepeat="0" uiButtonRepeatRate="100.0"
                uiButtonTriggerOnMouseDown="0" componentInternalFunction="-- None"
-               componentRectangle="488 8 88 32" componentLayerUid="734f247302000000b555d6b477010000"
-               uiType="uiButton"/>
+               componentRectangle="488 8 88 32" uiType="uiButton" componentLayerUid="734f247302000000b555d6b477010000"/>
   </modulator>
   <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
              name="globManufacturer" modulatorVstExported="0" modulatorValue="0">
@@ -162,7 +166,8 @@
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
-               uiType="uiLabel" componentRectangle="8 16 88 24" componentLayerUid="734f247302000000b555d6b477010000"/>
+               componentLayerUid="734f247302000000b555d6b477010000" componentRectangle="8 16 88 24"
+               uiType="uiLabel"/>
   </modulator>
   <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
              name="globFamily" modulatorVstExported="0" modulatorValue="0">
@@ -184,7 +189,8 @@
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
-               uiType="uiLabel" componentRectangle="96 16 88 24" componentLayerUid="734f247302000000b555d6b477010000"/>
+               componentLayerUid="734f247302000000b555d6b477010000" componentRectangle="96 16 88 24"
+               uiType="uiLabel"/>
   </modulator>
   <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
              name="globFamMember" modulatorVstExported="0" modulatorValue="0">
@@ -206,7 +212,8 @@
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
-               uiType="uiLabel" componentRectangle="184 16 88 24" componentLayerUid="734f247302000000b555d6b477010000"/>
+               componentLayerUid="734f247302000000b555d6b477010000" componentRectangle="184 16 88 24"
+               uiType="uiLabel"/>
   </modulator>
   <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
              name="globMajVersion" modulatorVstExported="0" modulatorValue="0">
@@ -228,7 +235,8 @@
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
-               uiType="uiLabel" componentRectangle="272 16 88 24" componentLayerUid="734f247302000000b555d6b477010000"/>
+               componentLayerUid="734f247302000000b555d6b477010000" componentRectangle="272 16 88 24"
+               uiType="uiLabel"/>
   </modulator>
   <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
              name="globMinVersion" modulatorVstExported="0" modulatorValue="0">
@@ -250,7 +258,8 @@
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
-               uiType="uiLabel" componentRectangle="368 16 88 24" componentLayerUid="734f247302000000b555d6b477010000"/>
+               componentLayerUid="734f247302000000b555d6b477010000" componentRectangle="368 16 88 24"
+               uiType="uiLabel"/>
   </modulator>
   <modulator modulatorCustomIndex="0" modulatorCustomIndexGroup="0" modulatorIsStatic="1"
              name="globDevId" modulatorVstExported="0" modulatorValue="0">
@@ -272,6 +281,7 @@
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
-               uiType="uiLabel" componentRectangle="0 48 88 24" componentLayerUid="734f247302000000b555d6b477010000"/>
+               componentLayerUid="734f247302000000b555d6b477010000" componentRectangle="0 48 88 24"
+               uiType="uiLabel"/>
   </modulator>
 </panel>
