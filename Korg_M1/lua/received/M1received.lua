@@ -3,8 +3,18 @@
 -- @midi   CtrlrMidiMessage object
 --
 
-midiInquiryAnswerReceived = function(--[[ string --]] midi, --[[ table ]] data)
-   console("midiInquiryAnswerReceived")
+M1received = 1
+
+M1globalDataReceived = function(--[[ string --]] midi, --[[ table ]] data)
+   if (M1 == nil or M1["GlobalSettings"] == nil) then
+      assignGlobalSettings()
+   end
+
+   M1["globalData"] = data
+   setM1GlobalData()
+   
+   return
+--[[
    -- console(midi:toString())
    data["manufacturer"] = data["unrt vendor"]
    -- console("devsel: " .. tostring(deviceSelection))
@@ -26,5 +36,6 @@ midiInquiryAnswerReceived = function(--[[ string --]] midi, --[[ table ]] data)
       deviceSelection["current"] = 1
    end
    setDeviceSelection(deviceSelection["current"])
+--]]
 end
 

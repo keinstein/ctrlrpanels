@@ -1,4 +1,4 @@
-function memoryblockToString(data)
+function memoryBlockToString(data)
 	-- Your method code here
     console("memoryBlockToString")
 	-- Your method code here

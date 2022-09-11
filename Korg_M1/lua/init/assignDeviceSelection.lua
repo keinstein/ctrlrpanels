@@ -8,6 +8,7 @@ function assignDeviceSelection()
       minor        = panel:getModulatorByName("globMinVersion"):getComponent(),
       devId        = panel:getModulatorByName("globDevId"):getComponent(),
       devId1        = panel:getModulatorByName("globDevId1"),
+      devSelection = panel:getModulatorByName("globSelDevice"):getComponent(),
       devices      = {},
    }
 end
